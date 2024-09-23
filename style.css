@@ -26,3 +26,9 @@
   --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   --transition: 200ms ease;
 }
+
+body {
+  font-family: var(--font-family);
+  background: #f8fafc;
+  min-height: 100vh;
+}
