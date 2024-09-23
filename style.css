@@ -72,3 +72,24 @@ body {
 .nav-links { list-style: none; display: flex; gap: 32px; }
 .nav-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color var(--transition); }
 .nav-links a:hover { color: var(--color-white); }
+
+.auth-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px 60px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 40px 36px;
+}
+
+.auth-header { text-align: center; margin-bottom: 32px; }
+.auth-header h1 { font-size: 1.5rem; font-weight: 700; color: var(--color-text); margin-bottom: 6px; }
+.auth-header p { font-size: 0.9rem; color: var(--color-text-secondary); }
