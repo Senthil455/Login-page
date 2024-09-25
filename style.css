@@ -93,3 +93,33 @@ body {
 .auth-header { text-align: center; margin-bottom: 32px; }
 .auth-header h1 { font-size: 1.5rem; font-weight: 700; color: var(--color-text); margin-bottom: 6px; }
 .auth-header p { font-size: 0.9rem; color: var(--color-text-secondary); }
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label { font-size: 0.85rem; font-weight: 600; color: var(--color-text); }
+.form-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.form-group input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-light); }
+.form-group input::placeholder { color: #94a3b8; }
+.input-wrapper { position: relative; }
+.input-wrapper input { padding-right: 44px; }
