@@ -142,3 +142,16 @@ body {
 
 .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 .btn-social svg { width: 18px; height: 18px; }
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0;
+}
+.auth-divider::before,
+.auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--color-border); }
+.auth-divider span { font-size: 0.8rem; color: var(--color-text-secondary); white-space: nowrap; text-transform: uppercase; letter-spacing: 0.05em; }
+.social-buttons { display: flex; gap: 12px; }
+.btn-social { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border: 1.5px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-white); font-size: 0.85rem; font-weight: 500; font-family: inherit; color: var(--color-text); cursor: pointer; transition: border-color var(--transition), background var(--transition); }
+.btn-social:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
