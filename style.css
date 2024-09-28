@@ -139,3 +139,6 @@ body {
   transition: color var(--transition), background var(--transition);
 }
 .toggle-password:hover { color: var(--color-text); background: var(--color-primary-light); }
+
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.btn-social svg { width: 18px; height: 18px; }
