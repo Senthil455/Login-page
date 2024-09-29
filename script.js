@@ -1,70 +1,69 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function () {
-  var form = document.getElementById('loginForm');
-  var email = document.getElementById('email');
-  var password = document.getElementById('password');
-  var remember = document.getElementById('remember');
-  var toggleBtn = document.querySelector('.toggle-password');
-  var submitBtn = form.querySelector('.btn-primary');
-
+var LoginPage = (function () {
+  var form, email, password, remember, toggleBtn, submitBtn;
   var passwordVisible = false;
 
-  function validateEmail(value) {
-    if (!value || value.trim() === '') return 'Email address is required';
-    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!re.test(value.trim())) return 'Please enter a valid email address';
-    return '';
-  }
+  var Validators = {
+    email: function (v) {
+      if (!v || v.trim() === '') return 'Email is required';
+      var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(v.trim()) ? '' : 'Invalid email address';
+    },
+    password: function (v) {
+      if (!v || v === '') return 'Password is required';
+      return v.length < 6 ? 'At least 6 characters' : '';
+    }
+  };
 
-  function validatePassword(value) {
-    if (!value || value === '') return 'Password is required';
-    if (value.length < 6) return 'Password must be at least 6 characters';
-    return '';
-  }
+  var UI = {
+    showError: function (input, msg) {
+      var g = input.closest('.form-group');
+      var el = g.querySelector('.field-error');
+      if (!el) { el = document.createElement('span'); el.className = 'field-error'; g.appendChild(el); }
+      el.textContent = msg;
+      input.style.borderColor = msg ? 'var(--color-error)' : '';
+    },
+    clearError: function (input) {
+      var g = input.closest('.form-group');
+      var el = g.querySelector('.field-error'); if (el) el.textContent = '';
+      input.style.borderColor = '';
+    },
+    valid: function (input, fn) {
+      var msg = fn(input.value);
+      if (msg) { this.showError(input, msg); return false; }
+      this.clearError(input); return true;
+    }
+  };
 
-  function showError(input, msg) {
-    input.style.borderColor = msg ? 'var(--color-error)' : '';
-  }
-
-  function validateForm() {
-    showError(email, validateEmail(email.value));
-    showError(password, validatePassword(password.value));
-    return !email.style.borderColor && !password.style.borderColor;
-  }
+  function validForm() { return UI.valid(email, Validators.email) && UI.valid(password, Validators.password); }
 
   function loadRemembered() {
-    try { var saved = localStorage.getItem('rememberedEmail'); if (saved) { email.value = saved; remember.checked = true; } } catch (e) {}
+    try { var s = localStorage.getItem('rememberedEmail'); if (s) { email.value = s; remember.checked = true; } } catch (e) {}
   }
 
-  function handleSubmit(e) {
+  function onSubmit(e) {
     e.preventDefault();
-    if (!validateForm()) return;
-    try {
-      if (remember.checked) localStorage.setItem('rememberedEmail', email.value.trim());
-      else localStorage.removeItem('rememberedEmail');
-    } catch (e) {}
+    if (!validForm()) return;
+    try { if (remember.checked) localStorage.setItem('rememberedEmail', email.value.trim()); else localStorage.removeItem('rememberedEmail'); } catch (e) {}
     submitBtn.disabled = true;
     submitBtn.textContent = 'Signing in...';
     setTimeout(function () { submitBtn.disabled = false; submitBtn.textContent = 'Sign in'; }, 1200);
   }
 
   loadRemembered();
-  email.addEventListener('blur', function () { showError(this, validateEmail(this.value)); });
-  email.addEventListener('input', function () { if (this.style.borderColor) showError(this, validateEmail(this.value)); });
-  password.addEventListener('blur', function () { showError(this, validatePassword(this.value)); });
-  password.addEventListener('input', function () { if (this.style.borderColor) showError(this, validatePassword(this.value)); });
+  email.addEventListener('blur', function () { UI.valid(email, Validators.email); });
+  email.addEventListener('input', function () { if (email.style.borderColor) UI.valid(email, Validators.email); });
+  password.addEventListener('blur', function () { UI.valid(password, Validators.password); });
+  password.addEventListener('input', function () { if (password.style.borderColor) UI.valid(password, Validators.password); });
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', function () {
       passwordVisible = !passwordVisible;
       password.type = passwordVisible ? 'text' : 'password';
       this.setAttribute('aria-label', passwordVisible ? 'Hide password' : 'Show password');
-      this.innerHTML = passwordVisible
-        ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>'
-        : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
     });
   }
 
-  form.addEventListener('submit', handleSubmit);
-});
+  form.addEventListener('submit', onSubmit);
+})();
