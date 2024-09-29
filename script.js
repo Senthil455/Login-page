@@ -27,6 +27,29 @@ document.addEventListener('DOMContentLoaded', function () {
     input.style.borderColor = msg ? 'var(--color-error)' : '';
   }
 
+  function validateForm() {
+    showError(email, validateEmail(email.value));
+    showError(password, validatePassword(password.value));
+    return !email.style.borderColor && !password.style.borderColor;
+  }
+
+  function loadRemembered() {
+    try { var saved = localStorage.getItem('rememberedEmail'); if (saved) { email.value = saved; remember.checked = true; } } catch (e) {}
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!validateForm()) return;
+    try {
+      if (remember.checked) localStorage.setItem('rememberedEmail', email.value.trim());
+      else localStorage.removeItem('rememberedEmail');
+    } catch (e) {}
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Signing in...';
+    setTimeout(function () { submitBtn.disabled = false; submitBtn.textContent = 'Sign in'; }, 1200);
+  }
+
+  loadRemembered();
   email.addEventListener('blur', function () { showError(this, validateEmail(this.value)); });
   email.addEventListener('input', function () { if (this.style.borderColor) showError(this, validateEmail(this.value)); });
   password.addEventListener('blur', function () { showError(this, validatePassword(this.value)); });
@@ -42,4 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
         : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
     });
   }
+
+  form.addEventListener('submit', handleSubmit);
 });
