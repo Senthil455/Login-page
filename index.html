@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In</title>
-  <meta name="description" content="Sign in to your account">
+  <title>Sign In | AppName</title>
+  <meta name="description" content="Sign in to your AppName account">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav-container">
-      <a href="/" class="logo">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <header class="site-header" role="banner">
+    <nav class="nav-container" role="navigation" aria-label="Main navigation">
+      <a href="/" class="logo" aria-label="AppName home">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 2L2 7l10 5 10-5-10-5z"/>
           <path d="M2 17l10 5 10-5"/>
           <path d="M2 12l10 5 10-5"/>
@@ -25,29 +25,31 @@
       </ul>
     </nav>
   </header>
-  <main>
-    <section class="auth-section">
+  <main role="main">
+    <section class="auth-section" aria-labelledby="auth-heading">
       <div class="auth-card">
         <div class="auth-header">
-          <h1>Welcome back</h1>
+          <h1 id="auth-heading">Welcome back</h1>
           <p>Sign in to your account to continue</p>
         </div>
-        <form class="auth-form" id="loginForm" novalidate>
+        <form class="auth-form" id="loginForm" novalidate aria-label="Sign in form">
           <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" id="email" name="email" placeholder="mila@example.com" required autocomplete="email">
+            <input type="email" id="email" name="email" placeholder="mila@example.com" required autocomplete="email" aria-describedby="email-error">
+            <span id="email-error" class="field-error" role="alert"></span>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
             <div class="input-wrapper">
-              <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+              <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password" aria-describedby="password-error">
               <button type="button" class="toggle-password" aria-label="Show password">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                   <circle cx="12" cy="12" r="3"/>
                 </svg>
               </button>
             </div>
+            <span id="password-error" class="field-error" role="alert"></span>
           </div>
           <div class="form-options">
             <label class="checkbox-label">
@@ -59,15 +61,15 @@
           <button type="submit" class="btn-primary">Sign in</button>
           <div class="auth-divider"><span>or continue with</span></div>
           <div class="social-buttons">
-            <button type="button" class="btn-social">Google</button>
-            <button type="button" class="btn-social">GitHub</button>
+            <button type="button" class="btn-social" aria-label="Sign in with Google">Google</button>
+            <button type="button" class="btn-social" aria-label="Sign in with GitHub">GitHub</button>
           </div>
         </form>
         <p class="auth-footer-text">Don't have an account? <a href="#">Sign up</a></p>
       </div>
     </section>
   </main>
-  <footer class="site-footer">
+  <footer class="site-footer" role="contentinfo">
     <div class="footer-container">
       <div class="footer-links">
         <a href="#">Privacy</a>
