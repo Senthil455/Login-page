@@ -166,3 +166,5 @@ body {
 .footer-links a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.85rem; transition: color var(--transition); }
 .footer-links a:hover { color: var(--color-white); }
 .footer-copy { color: rgba(255, 255, 255, 0.4); font-size: 0.8rem; }
+
+.field-error { font-size: 0.78rem; color: var(--color-error); min-height: 16px; }
