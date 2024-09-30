@@ -155,3 +155,14 @@ body {
 .social-buttons { display: flex; gap: 12px; }
 .btn-social { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border: 1.5px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-white); font-size: 0.85rem; font-weight: 500; font-family: inherit; color: var(--color-text); cursor: pointer; transition: border-color var(--transition), background var(--transition); }
 .btn-social:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+
+.site-footer {
+  background: rgba(15, 23, 42, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px;
+}
+.footer-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.85rem; transition: color var(--transition); }
+.footer-links a:hover { color: var(--color-white); }
+.footer-copy { color: rgba(255, 255, 255, 0.4); font-size: 0.8rem; }
