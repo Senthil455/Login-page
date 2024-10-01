@@ -189,3 +189,11 @@ body {
   .site-footer { padding: 20px 16px; }
   .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
 }
+
+.site-header { animation: slideDown 0.4s ease; }
+.auth-card { animation: fadeInUp 0.5s ease; }
+.site-footer { animation: slideUp 0.4s ease; }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
