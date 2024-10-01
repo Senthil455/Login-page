@@ -168,3 +168,13 @@ body {
 .footer-copy { color: rgba(255, 255, 255, 0.4); font-size: 0.8rem; }
 
 .field-error { font-size: 0.78rem; color: var(--color-error); min-height: 16px; }
+
+@media (max-width: 768px) {
+  .nav-container { padding: 0 16px; }
+  .nav-links { gap: 20px; }
+  .nav-links a { font-size: 0.85rem; }
+  .auth-card { padding: 32px 24px; }
+  .auth-header h1 { font-size: 1.35rem; }
+  .social-buttons { flex-direction: column; }
+  .footer-container { flex-direction: column; gap: 16px; text-align: center; }
+}
