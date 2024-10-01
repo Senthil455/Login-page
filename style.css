@@ -178,3 +178,14 @@ body {
   .social-buttons { flex-direction: column; }
   .footer-container { flex-direction: column; gap: 16px; text-align: center; }
 }
+
+@media (max-width: 480px) {
+  body { overflow-x: hidden; }
+  .nav-links li:not(:first-child) { display: none; }
+  .auth-section { padding: 80px 16px 40px; }
+  .auth-card { padding: 28px 20px; border-radius: var(--radius-md); }
+  .auth-header h1 { font-size: 1.2rem; }
+  .form-options { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .site-footer { padding: 20px 16px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+}
