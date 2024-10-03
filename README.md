@@ -31,3 +31,7 @@ Open `index.html` in any modern browser. No build tools required.
 - Firefox 55+
 - Safari 12+
 - Edge 79+
+
+## Credits
+
+Built as part of a personal portfolio project.
