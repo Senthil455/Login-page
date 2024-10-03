@@ -24,3 +24,10 @@ Open `index.html` in any modern browser. No build tools required.
 ├── style.css     # All styles with CSS custom properties
 └── script.js     # Client-side form logic
 ```
+
+## Browser Support
+
+- Chrome 60+
+- Firefox 55+
+- Safari 12+
+- Edge 79+
