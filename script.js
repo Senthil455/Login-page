@@ -1,5 +1,6 @@
 'use strict';
 
+/** LoginPage module */
 var LoginPage = (function () {
   var form, email, password, remember, toggleBtn, submitBtn;
   var passwordVisible = false;
